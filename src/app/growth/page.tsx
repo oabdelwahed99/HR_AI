@@ -40,7 +40,7 @@ export default function GrowthPathsPage() {
               Personalized Growth Paths
             </h1>
             <p className="text-slate-400">
-              AI-generated training recommendations tailored to each employee&#39;s competency gaps
+              AI-generated training recommendations tailored to individual employee competency gaps
             </p>
           </div>
 
