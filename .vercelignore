@@ -1,0 +1,5 @@
+# Files to ignore in Vercel builds
+# This ensures mockData.ts (if it exists) is not included
+src/data/mockData.ts
+**/mockData.ts
+*.mock.ts
