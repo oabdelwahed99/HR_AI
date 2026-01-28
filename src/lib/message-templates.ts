@@ -21,7 +21,7 @@ export function generateCelebrationMessage(
 ): MessageTemplate {
   const gap = gapName || employee.gapAnalysis?.competencyGaps[0]?.name || "skill gap";
   
-  const templates = {
+  const templates: Record<MessageTone, { subject: string; body: string }> = {
     Celebratory: {
       subject: `🎉 Congratulations on Closing Your ${gap}!`,
       body: `Hi ${employee.firstName},
@@ -55,6 +55,28 @@ Keep crushing it!
 Cheers,
 HR Team`,
     },
+    Motivational: {
+      subject: `Incredible Progress on Your ${gap}! 💪`,
+      body: `Hi ${employee.firstName},
+
+What an achievement! You've closed your ${gap} gap through hard work and dedication. This is exactly the kind of growth mindset that leads to success.
+
+Keep pushing forward - you're on an amazing trajectory!
+
+Best,
+HR-OS Pulse Team`,
+    },
+    Supportive: {
+      subject: `Congratulations on Closing Your ${gap}`,
+      body: `Dear ${employee.firstName},
+
+We wanted to acknowledge your achievement in closing your ${gap} competency gap. Your commitment to continuous learning and development is commendable.
+
+We're here to support your continued growth and success.
+
+Warm regards,
+HR-OS Pulse Team`,
+    },
   };
 
   const selectedTemplate = templates[tone] || templates.Celebratory;
@@ -83,7 +105,7 @@ export function generateMotivationMessage(
   const courseName = course?.title || track?.courses[0]?.title || "your training track";
   const progress = track?.progress || 0;
 
-  const templates = {
+  const templates: Record<MessageTone, { subject: string; body: string }> = {
     Motivational: {
       subject: `You're ${progress}% There - Finish Strong! 💪`,
       body: `Hi ${employee.firstName},
@@ -119,6 +141,28 @@ Please continue your progress to meet the completion deadline.
 Regards,
 HR-OS Pulse`,
     },
+    Celebratory: {
+      subject: `🎉 Amazing Progress on ${courseName}!`,
+      body: `Hi ${employee.firstName},
+
+Fantastic work! You're ${progress}% through ${courseName} - that's incredible progress! You're demonstrating real commitment to your professional development.
+
+Keep up the momentum and finish strong!
+
+Best regards,
+HR-OS Pulse Team`,
+    },
+    Friendly: {
+      subject: `Hey ${employee.firstName}, you're crushing ${courseName}! 🚀`,
+      body: `Hey ${employee.firstName},
+
+Just wanted to check in - you're ${progress}% through ${courseName}! That's awesome progress. You're doing great, and we're excited to see you finish this up.
+
+Keep going - you've got this!
+
+Cheers,
+HR Team`,
+    },
   };
 
   const selectedTemplate = templates[tone] || templates.Motivational;
@@ -147,7 +191,7 @@ export function generateNudgeMessage(
   const incompleteTracks = employee.trainingTracks.filter(t => t.completionStatus !== "Completed");
   const trackNames = incompleteTracks.map(t => t.name).join(", ") || "your training tracks";
 
-  const templates = {
+  const templates: Record<MessageTone, { subject: string; body: string }> = {
     Professional: {
       subject: `Upcoming Review: Complete Your Training Tracks`,
       body: `Dear ${employee.firstName},
@@ -180,6 +224,28 @@ Let's make sure you're positioned for success!
 
 Best,
 HR-OS Pulse`,
+    },
+    Celebratory: {
+      subject: `🎉 Prepare for Your Review Success!`,
+      body: `Hi ${employee.firstName},
+
+Your annual review is ${review} - what an opportunity! Completing your ${trackNames} would be a fantastic way to showcase your growth and achievements.
+
+You've come so far - let's finish strong!
+
+Best regards,
+HR-OS Pulse Team`,
+    },
+    Friendly: {
+      subject: `Quick heads up: Review prep time! 👋`,
+      body: `Hey ${employee.firstName},
+
+Just wanted to give you a heads up that your annual review is ${review}. Finishing up your ${trackNames} would be a great way to show off all the awesome work you've been doing.
+
+We're rooting for you!
+
+Cheers,
+HR Team`,
     },
   };
 

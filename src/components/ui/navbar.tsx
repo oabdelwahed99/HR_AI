@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Bell, Search, User } from "lucide-react";
+import { AIStatusIndicator } from "@/components/ai/ai-status-indicator";
 
 export function Navbar() {
   return (
@@ -33,6 +34,11 @@ export function Navbar() {
             <Bell className="w-5 h-5" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-indigo-500 rounded-full"></span>
           </button>
+
+          {/* AI Status Indicator */}
+          <div className="hidden lg:block">
+            <AIStatusIndicator />
+          </div>
 
           {/* User */}
           <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors">
