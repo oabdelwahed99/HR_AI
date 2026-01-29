@@ -13,6 +13,7 @@ import {
   BarChart3,
   Settings,
   Sparkles,
+  MessageSquare,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +24,7 @@ const menuItems = [
   { icon: TrendingUp, label: "Growth Paths", href: "/growth" },
   { icon: BarChart3, label: "Succession Matrix", href: "/succession" },
   { icon: FileText, label: "Ghostwriter", href: "/ghostwriter" },
+  { icon: MessageSquare, label: "HR Assistant", href: "/chatbot" },
   { icon: Settings, label: "Settings", href: "/settings" },
 ];
 
